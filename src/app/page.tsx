@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -17,7 +19,30 @@ import TypeEffectOne from "./components/type-effect-one";
 
 import { FiArrowRight, FiMail } from "react-icons/fi";
 
+import { useForm, SubmitHandler } from "react-hook-form";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+
+const schema = z.object({
+  email: z.string().email(),
+});
+
+type FormInput = z.infer<typeof schema>;
+
 export default function Page() {
+  const [sent, setSent] = useState(false);
+
+  const { register, handleSubmit } = useForm<FormInput>({
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit: SubmitHandler<FormInput> = (data) => {
+    //Submit code to go here
+    console.log("Submit data", data);
+    setSent(true);
+  };
+
   return (
     <>
       <Navbar
@@ -35,47 +60,60 @@ export default function Page() {
           <div className="grid grid-cols-1 text-center">
             <div className="">
               <TypeEffectOne />
-              <p className="text-slate-500 dark:text-white/60 text-lg max-w-xl mx-auto">
-                Enter your email address to find out more...
-              </p>
+              {!sent ? (
+                <>
+                  <p className="text-slate-500 dark:text-white/60 text-lg max-w-xl mx-auto">
+                    Enter your email address to find out more...
+                  </p>
 
-              <div className="subcribe-form mt-6 mb-3">
-                <form className="relative max-w-lg mx-auto">
-                  <FiMail className="size-4 absolute top-[17px] start-5 text-slate-400" />
-                  <input
-                    type="email"
-                    id="subcribe"
-                    name="email"
-                    className="form-input border-0 py-4 ps-12 pe-12 w-full h-[50px] outline-none text-black dark:text-white rounded-full bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 focus:border-0 focus:ring-0"
-                    placeholder="Your Email Adddress :"
-                  />
-                  <button
-                    type="submit"
-                    className="size-[46px] inline-flex items-center justify-center rounded-full align-middle absolute top-[2px] end-[3px] bg-primary border-primary text-white"
-                  >
-                    <FiArrowRight className="size-5" />
-                  </button>
-                </form>
-              </div>
+                  <div className="subcribe-form mt-6 mb-3">
+                    <form
+                      className="relative max-w-lg mx-auto"
+                      onSubmit={handleSubmit(onSubmit)}
+                    >
+                      <FiMail className="size-4 absolute top-[17px] start-5 text-slate-400" />
+                      <input
+                        type="email"
+                        id="subcribe"
+                        className="form-input border-0 py-4 ps-12 pe-12 w-full h-[50px] outline-none text-black dark:text-white rounded-full bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 focus:border-0 focus:ring-0"
+                        placeholder="Your Email Address :"
+                        {...register("email", { required: true })}
+                      />
+                      <button
+                        type="submit"
+                        className="size-[46px] inline-flex items-center justify-center rounded-full align-middle absolute top-[2px] end-[3px] bg-primary border-primary text-white"
+                      >
+                        <FiArrowRight className="size-5" />
+                      </button>
+                    </form>
+                  </div>
 
-              <span className="text-slate-500 dark:text-white/60 font-light text-sm">
-                By entering your email, you agree to our{" "}
-                <Link
-                  href="https://www.scribden.com/terms"
-                  className="text-primary"
-                  target="_blank"
-                >
-                  Terms
-                </Link>{" "}
-                and{" "}
-                <Link
-                  href="https://www.scribden.com/privacy-policy"
-                  className="text-primary"
-                  target="_blank"
-                >
-                  Privacy Policy.
-                </Link>
-              </span>
+                  <span className="text-slate-500 dark:text-white/60 font-light text-sm">
+                    By entering your email, you agree to our{" "}
+                    <Link
+                      href="https://www.scribden.com/terms"
+                      className="text-primary"
+                      target="_blank"
+                    >
+                      Terms
+                    </Link>{" "}
+                    and{" "}
+                    <Link
+                      href="https://www.scribden.com/privacy-policy"
+                      className="text-primary"
+                      target="_blank"
+                    >
+                      Privacy Policy.
+                    </Link>
+                  </span>
+                </>
+              ) : (
+                <>
+                  <p className="text-slate-500 dark:text-white/60 text-lg max-w-xl mx-auto">
+                    Thanks for registering your interest
+                  </p>
+                </>
+              )}
             </div>
             <div className="relative mt-4 lg:mx-16 z-3">
               <Image

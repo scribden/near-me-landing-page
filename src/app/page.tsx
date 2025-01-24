@@ -23,6 +23,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { useMutation, useQuery } from "react-query";
+import { registerInterestQuery } from "./graphql/queries";
 
 const schema = z.object({
   email: z.string().email(),
@@ -33,13 +35,43 @@ type FormInput = z.infer<typeof schema>;
 export default function Page() {
   const [sent, setSent] = useState(false);
 
+  const useEmail = () => {
+    return useMutation({
+      mutationFn: async (email: string) => {
+        console.log(process.env.NEXT_PUBLIC_API_URL);
+
+        if (
+          !process.env.NEXT_PUBLIC_API_URL ||
+          !process.env.NEXT_PUBLIC_API_KEY
+        ) {
+          console.log(
+            "Envrionment variables are not set to connect to API and Services"
+          );
+          return {};
+        }
+        return fetch(process.env.NEXT_PUBLIC_API_URL, {
+          method: "POST",
+          headers: {
+            "x-api-key": process.env.NEXT_PUBLIC_API_KEY!,
+          },
+          body: JSON.stringify({
+            query: registerInterestQuery,
+            variables: { email },
+          }),
+        });
+      },
+    });
+  };
+
+  const { mutate, isLoading } = useEmail();
+
   const { register, handleSubmit } = useForm<FormInput>({
     resolver: zodResolver(schema),
   });
 
   const onSubmit: SubmitHandler<FormInput> = (data) => {
-    //Submit code to go here
     console.log("Submit data", data);
+    mutate(data.email);
     setSent(true);
   };
 
@@ -80,6 +112,7 @@ export default function Page() {
                         {...register("email", { required: true })}
                       />
                       <button
+                        disabled={isLoading}
                         type="submit"
                         className="size-[46px] inline-flex items-center justify-center rounded-full align-middle absolute top-[2px] end-[3px] bg-primary border-primary text-white"
                       >

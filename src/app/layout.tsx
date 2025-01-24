@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./assets/scss/tailwind.scss";
 import "./assets/css/material.css";
+import { Providers } from "./providers";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -23,7 +24,7 @@ export default function RootLayout({
       <body
         className={` ${manrope.variable} font-manrope text-base text-slate-900 dark:text-white dark:bg-slate-900`}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

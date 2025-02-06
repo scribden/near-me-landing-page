@@ -9,7 +9,7 @@ export default function AboutTwoVideo() {
       <div className="lg:col-span-5 md:col-span-6 md:order-2 order-1">
         <div className="pb-6 px-6 rounded-2xl bg-primary/5 dark:bg-primary/10 shadow shadow-primary/20">
           <video
-            src="/videos/map-move.mp4"
+            src="https://res.cloudinary.com/dtemuf6fd/video/upload/v1738861907/anagn484ki2vd6xzoueq.mp4"
             autoPlay
             loop
             muted

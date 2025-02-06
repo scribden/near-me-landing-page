@@ -25,7 +25,7 @@ export default function FeaturesVideo() {
 
       <div className="lg:col-span-4 md:col-span-12 lg:mx-4 lg:order-2 order-1">
         <video
-          src="/videos/profile.mp4"
+          src="https://res.cloudinary.com/dtemuf6fd/video/upload/v1738861907/zgqyhm77jjlxqo9d3hwp.mp4"
           autoPlay
           loop
           muted

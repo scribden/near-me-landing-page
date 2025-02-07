@@ -9,13 +9,21 @@ export default function AboutTwoVideo() {
       <div className="lg:col-span-5 md:col-span-6 md:order-2 order-1">
         <div className="pb-6 px-6 rounded-2xl bg-primary/5 dark:bg-primary/10 shadow shadow-primary/20">
           <video
-            src="https://res.cloudinary.com/dtemuf6fd/video/upload/v1738861907/anagn484ki2vd6xzoueq.mp4"
             autoPlay
             loop
             muted
             style={{ width: "100%", height: "auto" }}
             className="mx-auto"
-          />
+          >
+            <source
+              src="https://res.cloudinary.com/dtemuf6fd/video/upload/f_webm/v1738861907/anagn484ki2vd6xzoueq"
+              type="video/webm"
+            />
+            <source
+              src="https://res.cloudinary.com/dtemuf6fd/video/upload/v1738861907/anagn484ki2vd6xzoueq.mp4"
+              type="video/mp4"
+            />
+          </video>
         </div>
       </div>
 

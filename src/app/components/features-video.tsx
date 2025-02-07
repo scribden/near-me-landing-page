@@ -25,13 +25,21 @@ export default function FeaturesVideo() {
 
       <div className="lg:col-span-4 md:col-span-12 lg:mx-4 lg:order-2 order-1">
         <video
-          src="https://res.cloudinary.com/dtemuf6fd/video/upload/v1738861907/zgqyhm77jjlxqo9d3hwp.mp4"
           autoPlay
           loop
           muted
           style={{ width: "100%", height: "auto" }}
           className="mx-auto"
-        />
+        >
+          <source
+            src="https://res.cloudinary.com/dtemuf6fd/video/upload/f_webm/v1738861907/zgqyhm77jjlxqo9d3hwp"
+            type="video/webm"
+          />
+          <source
+            src="https://res.cloudinary.com/dtemuf6fd/video/upload/v1738861907/zgqyhm77jjlxqo9d3hwp.mp4"
+            type="video/mp4"
+          />
+        </video>
       </div>
 
       <div className="lg:col-span-4 md:col-span-6 order-3">

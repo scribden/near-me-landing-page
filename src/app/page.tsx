@@ -151,12 +151,14 @@ export default function Page() {
             <div className="relative mt-4 lg:mx-16 z-3">
               <Image
                 src="/images/phone/3-phone-half.png"
-                width={0}
-                height={0}
+                width={992}
+                height={552}
                 sizes="100vw"
                 style={{ width: "100%", height: "auto" }}
                 alt=""
                 className="mover"
+                placeholder="empty"
+                priority
               />
             </div>
           </div>

@@ -28,6 +28,7 @@ export default function AboutOneVideo() {
       <div className="lg:col-span-5 md:col-span-6">
         <div className="pt-6 px-6 rounded-2xl bg-primary/5 dark:bg-primary/10 shadow shadow-primary/20">
           <video
+            playsInline
             autoPlay
             loop
             muted

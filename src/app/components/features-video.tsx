@@ -25,6 +25,7 @@ export default function FeaturesVideo() {
 
       <div className="lg:col-span-4 md:col-span-12 lg:mx-4 lg:order-2 order-1">
         <video
+          playsInline
           autoPlay
           loop
           muted

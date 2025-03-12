@@ -20,7 +20,7 @@ export default function Footer() {
           <div className="md:col-span-3">
             <Link href="#" className="logo-footer">
               <Image
-                src="/images/logo-light.png"
+                src="/images/logo-light.svg"
                 width={121}
                 height={20}
                 className="md:ms-0 mx-auto"

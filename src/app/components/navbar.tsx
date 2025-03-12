@@ -46,33 +46,33 @@ export default function Navbar({
         {!navLight && (
           <Link className="navbar-brand md:me-8" href="/">
             <Image
-              src="/images/logo-dark.png"
+              src="/images/logo-dark.svg"
               width={121}
               height={20}
-              className="h-5 inline-block dark:hidden"
-              alt=""
+              className="h-5 inline-block dark:hidden object-cover"
+              alt="Nearme logo"
             />
-            <Image
-              src="/images/logo-light.png"
+            {/* <Image
+              src="/images/logo-light.svg"
               width={121}
               height={20}
               className="h-5 hidden dark:inline-block"
               alt=""
-            />
+            /> */}
           </Link>
         )}
         {navLight && (
           <Link className="navbar-brand" href="/">
             <span className="inline-block dark:hidden">
               <Image
-                src="/images/logo-dark.png"
+                src="/images/logo-dark.svg"
                 width={121}
                 height={20}
                 className="l-dark"
                 alt=""
               />
               <Image
-                src="/images/logo-light.png"
+                src="/images/logo-light.svg"
                 width={121}
                 height={20}
                 className="l-light"
@@ -80,7 +80,7 @@ export default function Navbar({
               />
             </span>
             <Image
-              src="/images/logo-light.png"
+              src="/images/logo-light.svg"
               width={121}
               height={20}
               className="hidden dark:inline-block"

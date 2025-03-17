@@ -5,7 +5,7 @@ import { TypeAnimation } from "react-type-animation";
 
 export default function TypeEffectOne() {
   return (
-    <h4 className="lg:leading-normal leading-normal text-4xl lg:text-[54px] mb-5">
+    <h4 className="lg:leading-normal leading-normal text-1xl lg:text-[54px] mb-5">
       Connecting Communities to Local Services <br />
       {/* <TypeAnimation
         sequence={[

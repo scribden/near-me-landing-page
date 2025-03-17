@@ -63,7 +63,7 @@ export const SubmitForm = () => {
   return (
     <>
       <p
-        className={`text-slate-500 dark:text-white/60 text-lg max-w-xl mx-auto transition-opacity duration-1000 
+        className={`text-slate-500 dark:text-white/60 text-sm max-w-xl mx-auto transition-opacity duration-1000 
             ${
               step === 1 ? "opacity-1 max-h-max" : "opacity-0 invisible max-h-0"
             }`}

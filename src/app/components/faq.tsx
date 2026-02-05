@@ -35,6 +35,7 @@ export default function Faq() {
               style={{ width: "100%", height: "auto" }}
               className="mx-auto md:max-w-xs lg:max-w-sm"
               alt=""
+              priority
             />
           </div>
           <div className="overflow-hidden absolute md:size-[500px] size-[400px] bg-gradient-to-tr to-primary/20 via-primary/70 from-primary bottom-1/2 translate-y-1/2 md:end-0 end-1/2 md:translate-x-0 translate-x-1/2 -z-1 shadow-md shadow-primary/10 rounded-full"></div>

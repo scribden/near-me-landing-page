@@ -54,7 +54,6 @@ export const SubmitForm = () => {
   });
 
   const onSubmit: SubmitHandler<FormInput> = (data) => {
-    console.log("Submit data", data);
     mutate(data.email);
     setSent(true);
     setStep(step + 1);
